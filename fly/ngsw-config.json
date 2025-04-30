@@ -1,0 +1,71 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/index.html",
+          "/*.css",
+          "/*.js",
+          "/assets/images/**",
+          "/assets/sounds/**",
+          "/assets/styles.css",
+          "!/assets/**/*.txt"
+        ]
+      }
+    },
+    {
+      "name": "libs",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/lib/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)",
+          "!/card.png",
+          "!/mobile.jpg"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "scripts",
+      "urls": [
+        "https://www.youtube.com/iframe_api"
+      ],
+      "cacheConfig": {
+        "maxSize": 1,
+        "maxAge": "1d",
+        "timeout": "5s",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "material-icons",
+      "urls": [
+        "https://fonts.googleapis.com/icon?family=Material+Icons"
+      ],
+      "cacheConfig": {
+        "maxSize": 1,
+        "maxAge": "7d",
+        "timeout": "5s",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "configs",
+      "urls": [
+        "/assets/config.yaml"
+      ],
+      "cacheConfig": {
+        "maxSize": 0,
+        "maxAge": "3h",
+        "strategy": "freshness"
+      }
+    }
+  ]
+}
